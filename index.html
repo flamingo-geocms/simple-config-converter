@@ -1,0 +1,68 @@
+<html>
+	<head>
+	<title>Convert xml config 3 > 4</title>
+	<script type="text/javascript">
+var config=[
+	{ replace: 'fmc:LocationFinder', by: 'cmc:LocationFInder'},
+	{replace: 'fmc:Authentication', by: 'cmc:Authentication'},
+	{replace: 'fmc:BitmapClone', by: 'cmc:BitmapClone'},
+	{replace: 'fmc:ComponentVisibleButton', by: 'cmc:ComponentVisibleButton'},
+	{replace: "fmc:Debugger", by: "cmc:Debugger"},
+	{replace: "fmc:DownloadSelector", by: "cmc:DownloadSelector"},
+	{replace: "fmc:DownloadSelectorButton", by: "cmc:DownloadSelectorButton"},
+	{replace: "fmc:EditProperties", by: "cmc:EditProperties"},
+	{replace: "fmc:Extent", by: "cmc:Extent"},
+	{replace: "fmc:ExtentSelector", by: "cmc:ExtentSelector"},
+	{replace: "fmc:HotlinkResults", by: "cmc:HotlinkResults"},
+	{replace: "fmc:HotlinkResults", by: "cmc:HotlinkResults"},
+	{replace: "fmc:HotlinkResults2", by: "cmc:HotlinkResults2"},
+	{replace: "fmc:IdentifyResults", by: "cmc:IdentifyResults"},
+	{replace: "fmc:IdentifyResultsHTML", by: "cmc:IdentifyResultsHTML"},
+	{replace: "fmc:Image", by: "cmc:Image"},
+	{replace: "fmc:LanguagePicker", by: "cmc:LanguagePicker"},
+	{replace: "fmc:LayerProxy", by: "cmc:LayerProxy"},
+	{replace: "fmc:Legend", by: "cmc:Legend"},
+	{replace: "fmc:LocationFinder", by: "cmc:LocationFinder"},
+	{replace: "fmc:LocationPin", by: "cmc:LocationPin"},
+	{replace: "fmc:LocationResultViewer", by: "cmc:LocationResultViewer"},
+	{replace: "fmc:Logo", by: "cmc:Logo"},
+	{replace: "fmc:MapProxy", by: "cmc:MapProxy"},
+	{replace: "fmc:NamedExtentViewer", by: "cmc:NamedExtentViewer"},
+	{replace: "fmc:Print", by: "cmc:Print"},
+	{replace: "fmc:PrintLabel", by: "cmc:PrintLabel"},
+	{replace: "fmc:PrintTemplate", by: "cmc:PrintTemplate"},
+	{replace: "fmc:QueryComponent", by: "cmc:QueryComponent"},
+	{replace: "fmc:RemoteEventDispatcher", by: "cmc:RemoteEventDispatcher"},
+	{replace: "fmc:Tab", by: "cmc:Tab"},
+	{replace: "fmc:TabControl", by: "cmc:TabControl"},
+	{replace: "fmc:TextArea", by: "cmc:TextArea"},
+	{replace: "fmc:Theme", by: "cmc:Theme"},
+	{replace: "fmc:ThemeSelector", by: "cmc:ThemeSelector"},
+	{replace: "fmc:ToolBuffer", by: "cmc:ToolBuffer"},
+	{replace: "fmc:ToolDataFilter", by: "cmc:ToolDataFilter"},
+	{replace: "fmc:URL", by: "cmc:URL"},
+	{replace: "fmc:URLButton", by: "cmc:URLButton"},
+	{replace: "fmc:URLSelector", by: "cmc:URLSelector"},
+	{replace: "fmc:Window", by: "cmc:Window"}
+]
+function convertXML(xml){
+	xml=xml.replace("xmlns:fmc=",'xmlns:cmc=\"cmc\" xmlns:fmc=');
+	for (var i=0; i < config.length; i++){
+		//xml = xml.replace(/config[i]/g):
+		xml = xml.replace(new RegExp(config[i].replace, 'g'), config[i].by);
+	}
+	return xml;
+}
+function convertConfig(){
+	var el = document.getElementById("textarea");
+	el.value = convertXML(el.value);
+}
+	</script>
+	</head>
+<body>
+<h2>Insert configuration XML and hit the link</h2>
+<textarea id="textarea" rows="50" cols="150">
+</textarea> <br>
+<a href="javascript: void(0)" onclick="convertConfig()">Convert config</a>
+</body>
+</html>
